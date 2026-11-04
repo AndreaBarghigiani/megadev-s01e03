@@ -1,0 +1,18 @@
+---
+layout: runbook
+title: '0002 · Evidence before merging'
+owner: Andrea Barghigiani with Codex
+status: proposed
+reviewed: '2026-11-04'
+signature: 'Andrea Barghigiani with Codex / MEGA.dev S01E03 / 2026-11-04'
+---
+
+<script>
+import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+Proposed replacement for decision 0001: subject similarity finds candidates, not duplicates. Read bodies, inspect tenant locale, channel and form version, and group only when evidence supports the same defect. Deduplicate export rows by report ID. Preserve anomalous reports and unresolved causes rather than forcing them into a known ticket. Keep received and merged dates distinct. Review the rendered views before trusting narrative claims.
+
+This is a review proposal, not an assertion that the support desk adopted it. The accepted historical decision remains unchanged.
+
+<RenderStamp {signature} />

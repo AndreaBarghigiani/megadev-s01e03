@@ -1,0 +1,49 @@
+---
+layout: runbook
+title: '#4471 reviewed: two classified causes and unresolved symptoms'
+owner: Andrea Barghigiani with Codex
+status: investigated
+reviewed: '2026-11-04'
+signature: 'Andrea Barghigiani with Codex / MEGA.dev S01E03 / 2026-11-04'
+---
+
+<script>
+import CauseTable from '#lib/kb/CauseTable.svelte';
+import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+import RenderStamp from '#lib/kb/RenderStamp.svelte';
+import Callout from '#lib/kb/Callout.svelte';
+</script>
+
+This review replaces the conclusion in [the original incident](/kb/incidents/4471), not its historical evidence. The export is a snapshot from 4 October 2026; it does not establish current desk state or a deployed fix.
+
+## What the executable views show
+
+<CauseTable ticket={4471} />
+
+Counts deduplicate report IDs and use tenant locale and booking form version. Browser locale and intake tags are intake guesses, not reliable causes. The second group was merged into a ticket for a different defect and needs its own engineering issue.
+
+## Separate engineering work
+
+### Shared parser reads month first
+
+The parser accepts month-first dates even for day-first tenants. R-41200 reports 7 April becoming 4 July; R-41201 corrects the direction of its own report. Correct the shared parser using the tenant's expected format, and verify ambiguous and unambiguous dates across app and email entry paths. See [parser issue](https://github.com/AndreaBarghigiani/megadev-s01e03/issues/1).
+
+### booking-v3 hint disagrees with the reader
+
+booking-v3 prints MM/DD/YYYY while interpreting dates in the tenant's day-first order. R-41230 and R-41241 demonstrate the mismatch. Match the hint and reader to the same tenant format; test booking-v2 and booking-v3 across tenant locales. Fixing only the shared parser does not correct this misleading form. See [hint issue](https://github.com/AndreaBarghigiani/megadev-s01e03/issues/2).
+
+### Five reports need investigation beyond those labels
+
+R-41202 describes 12 May becoming 11 May; R-41209 describes June bookings a day off; R-41236 describes an invite arriving before booking; R-41344 describes different days in Lisbon and Toronto; R-41620 describes 6 October appearing as Monday. The table files these under parser by tenant. Their bodies do not prove a month/day swap, nor do they prove one shared alternative cause. Investigate date-only/timezone handling and send chronology, then split further if evidence warrants it. These reports overlap the parser group and must not be added again to the total. See [investigation issue](https://github.com/AndreaBarghigiani/megadev-s01e03/issues/3).
+
+## Received is not merged
+
+<QueueTimeline ticket={4471} />
+
+The received series records when reports arrived; the merged series records desk actions. A merge spike is not an incident-onset spike. Neither series proves a fix, and reports continued arriving after the bulk merge. “Known” describes a desk label, not resolution.
+
+## Change the triage decision
+
+[Decision 0001](/kb/decisions/0001-dedupe-by-subject) and [triage guidance](/kb/triage/dedupe) were reviewed in 2024. Their subject-only rule can merge different causes and split one cause across different wording. Preserve that accepted record as history; [decision 0002](/kb/decisions/0002-evidence-before-merge) supersedes it for this review. Match by evidence of cause, inspect body and tenant configuration, and leave uncertainty explicit. No product fix has been demonstrated here.
+
+<RenderStamp {signature} />

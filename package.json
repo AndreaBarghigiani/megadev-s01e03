@@ -1,0 +1,1 @@
+{"name":"megadev-s01e03","private":true,"type":"module","scripts":{"build":"node build.mjs"},"devDependencies":{"svelte":"5.57.3","mdsvex":"0.12.8","vite":"^7.0.0","@sveltejs/vite-plugin-svelte":"^6.0.0"}}
