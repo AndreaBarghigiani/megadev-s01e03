@@ -42,6 +42,10 @@ R-41202 describes 12 May becoming 11 May; R-41209 describes June bookings a day 
 
 The received series records when reports arrived; the merged series records desk actions. A merge spike is not an incident-onset spike. Neither series proves a fix, and reports continued arriving after the bulk merge. “Known” describes a desk label, not resolution.
 
+## Engineering disposition observed after first submission
+
+The challenge desk update reports: #4471 closed 05 October; parser fixed (`fix(dates): parse dd/mm for eu locales`); hint won’t fix because booking-v3 form was retired. These are different dispositions. Parser issue #1 is closed as completed based on the desk report; hint issue #2 is closed as not planned because its form was retired. Neither is a locally verified production fix. The five anomalous bodies remain uncertain; investigation #3 is closed as not planned for this exercise, with no claim that those symptoms were repaired. Reopen with fresh reproductions if they persist.
+
 ## Change the triage decision
 
 [Decision 0001](/kb/decisions/0001-dedupe-by-subject) and [triage guidance](/kb/triage/dedupe) were reviewed in 2024. Their subject-only rule can merge different causes and split one cause across different wording. Preserve that accepted record as history; [decision 0002](/kb/decisions/0002-evidence-before-merge) supersedes it for this review. Match by evidence of cause, inspect body and tenant configuration, and leave uncertainty explicit. No product fix has been demonstrated here.
