@@ -4,7 +4,7 @@ title: '#4471 reviewed: two classified causes and unresolved symptoms'
 owner: Andrea Barghigiani with Codex
 status: investigated
 reviewed: '2026-11-04'
-signature: 'Andrea Barghigiani with Codex / MEGA.dev S01E03 / 2026-11-04'
+signature: 'v1.eyJzdWIiOiI2NzIxIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTM3Njg2MTQsImV4cCI6MTc5Mzg1NTAxNH0.fq_xCw6Cv3dJ7nUx7WD87dTdtgz_cwrOrR2e6SYH_68'
 ---
 
 <script>
